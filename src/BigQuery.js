@@ -25,13 +25,13 @@ exports.auth = function (options) {
     throw new Error('You must specify a key or path to the key file');
   }
 
-  google.auth = new google.auth.JWT(
+  google.options({auth: new google.auth.JWT(
     options.email,
     options.keyFile ? path.resolve(options.keyFile) : null,
     options.key || null,
     ['https://www.googleapis.com/auth/bigquery'],
     null
-  );
+  )});
 };
 
 /**
