@@ -1,5 +1,7 @@
 var path = require('path');
 var google = require('googleapis');
+var _ = require('lodash');
+var type = require('type-of');
 var Table = require('../Table');
 
 /**
@@ -11,15 +13,25 @@ var Table = require('../Table');
  * @void
  */
 exports.auth = function (options) {
-  var authClient = new google.auth.JWT(
+  if (!_.isPlainObject(options)) {
+    throw new Error('Invalid options argument; expected object, received ' + type(options));
+  }
+
+  if (!_.isString(options.email)) {
+    throw new Error('Invalid email option; expected string, received ' + type(options.email));
+  }
+
+  if (options.key == null && options.keyFile == null) {
+    throw new Error('You must specify a key or path to the key file');
+  }
+
+  google.auth = new google.auth.JWT(
     options.email,
     options.keyFile ? path.resolve(options.keyFile) : null,
     options.key || null,
     ['https://www.googleapis.com/auth/bigquery'],
     null
   );
-
-  google.options({auth: authClient});
 };
 
 /**

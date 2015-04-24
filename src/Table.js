@@ -5,6 +5,7 @@ var tabledata = Promise.promisifyAll(google.bigquery('v2').tabledata);
 var jobs = Promise.promisifyAll(google.bigquery('v2').jobs);
 var uuid = require('node-uuid');
 var _ = require('lodash');
+var session = require('./session');
 
 /**
  * Creates a new BigQuery Table of the designated properties.
@@ -48,7 +49,10 @@ Table.prototype.register = function (callback) {
     })
     .catch(function (err) {
       // check if table already exists
-      if (err.code === 409) return _this.projectId + ':' + _this.datasetId + '.' + _this.tableId;
+      if (err.code === 409) {
+        return _this.projectId + ':' + _this.datasetId + '.' + _this.tableId;
+      }
+
       throw err;
     })
     .nodeify(callback);
@@ -60,7 +64,11 @@ Table.prototype.register = function (callback) {
  * @param {Function} [callback]
  * @return {Promise}
  */
-Table.prototype.push = function (records, callback) {
+Table.prototype.push = function (records, callback, _attempt) {
+  var _this = this;
+
+  _attempt = _attempt || 0;
+
   // make sure records is array
   if (!_.isArray(records)) records = [records];
 
@@ -89,8 +97,12 @@ Table.prototype.push = function (records, callback) {
       return data;
     })
     .catch(function (err) {
-      if (err.code === 401) {
-
+      // check if session has expired
+      if (err.code === 401 && _attempt === 0) {
+        return session.renew()
+          .then(function () {
+            return _this.push(records, callback, _attempt + 1);
+          });
       }
     })
     .nodeify(callback);
@@ -102,7 +114,11 @@ Table.prototype.push = function (records, callback) {
  * @param {Function} [callback]
  * @return {Promise}
  */
-Table.prototype.query = function (sql, callback) {
+Table.prototype.query = function (sql, callback, _attempt) {
+  var _this = this;
+
+  _attempt = _attempt || 0;
+
   return jobs.queryAsync({
     projectId: this.projectId,
     resource: {
@@ -114,6 +130,15 @@ Table.prototype.query = function (sql, callback) {
       }
     }
   })
+    .catch(function (err) {
+      // check if session has expired
+      if (err.code === 401 && _attempt === 0) {
+        return session.renew()
+          .then(function () {
+            return _this.query(sql, callback, _attempt + 1);
+          });
+      }
+    })
     .nodeify(callback);
 };
 
