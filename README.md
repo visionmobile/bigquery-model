@@ -63,7 +63,7 @@ Source code contributions are most welcome. The following rules apply:
 
 If you are having issues with this library, please let us know.
 
-* Issue Tracker: [github.com/visionmobile/bigquery-model/issues](https://github.com/visionmobile/heroku-dyno/issues)
+* Issue Tracker: [github.com/visionmobile/bigquery-model/issues](https://github.com/visionmobile/bigquery-model/issues)
 
 ## License
 
