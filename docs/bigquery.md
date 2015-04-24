@@ -34,4 +34,4 @@ bigquery.auth({
 
 ### <a name="table" href="#table">#</a>Table -> Table
 
-A handy reference to the [Table](https://github.com/visionmobile/bigquery-model/blob/master/docs/table.md class.
+A handy reference to the [Table](https://github.com/visionmobile/bigquery-model/blob/master/docs/table.md) class.
