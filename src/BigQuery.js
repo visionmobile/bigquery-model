@@ -2,7 +2,7 @@ var path = require('path');
 var google = require('googleapis');
 var _ = require('lodash');
 var type = require('type-of');
-var Table = require('../Table');
+var Table = require('./Table');
 
 /**
  * Assigns the designated auth options to the client.
