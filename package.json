@@ -1,0 +1,35 @@
+{
+  "name": "bigquery-model",
+  "version": "0.1.0",
+  "description": "Node.js abstraction layer to BigQuery tables",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/visionmobile/bigquery-model.git"
+  },
+  "main": "src/BigQuery.js",
+  "scripts": {
+    "test": "node test/index.js"
+  },
+  "keywords": [
+    "google",
+    "bigquery",
+    "table",
+    "model",
+    "api",
+    "schema"
+  ],
+  "author": "Dimitrios C. Michalakos <dimitris@jmike.gr>",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^2.9.24",
+    "googleapis": "^2.0.2",
+    "lodash": "^3.7.0",
+    "node-uuid": "^1.4.3",
+    "typeof": "^1.0.0"
+  },
+  "devDependencies": {
+    "chai": "^2.2.0",
+    "dotenv": "^1.1.0",
+    "mocha": "^2.2.4"
+  }
+}
