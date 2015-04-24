@@ -56,7 +56,7 @@ $ npm install bigquery-model
 Source code contributions are most welcome. The following rules apply:
 
 1. JavaScript source code needs to follow the [Airbnb Style Guide](https://github.com/airbnb/javascript);
-2. Functions need to be well documented in [API docs](https://github.com/visionmobile/bigquery-model/blob/master/docs/API.md);
+2. Functions need to be well documented in [API docs](https://github.com/visionmobile/bigquery-model/blob/master/docs/bigquery.md);
 3. Unit tests are necessary.
 
 ## Support
