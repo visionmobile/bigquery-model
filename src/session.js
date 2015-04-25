@@ -8,7 +8,7 @@ var google = require('googleapis');
  */
 exports.renew = function (callback) {
   var resolver = function (resolve, reject) {
-    google.auth.refreshAccessToken(function (err) {
+    google._options.auth.refreshAccessToken(function (err) {
       if (err) return reject(err);
       resolve();
     });
