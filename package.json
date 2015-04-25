@@ -1,6 +1,6 @@
 {
   "name": "bigquery-model",
-  "version": "0.1.0-alpha.3",
+  "version": "0.1.0-alpha.4",
   "description": "Node.js abstraction layer to BigQuery tables",
   "repository": {
     "type": "git",

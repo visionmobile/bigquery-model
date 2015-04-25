@@ -1,3 +1,7 @@
+## 0.1.0-alpha.4 - 2015-04-25
+
+* Session references the auth object under google._options
+
 ## 0.1.0-alpha.3 - 2015-04-24
 
 * Bugfix: Reference the right Table module
