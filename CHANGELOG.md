@@ -1,3 +1,8 @@
+## 0.1.0 - 2015-04-25
+
+* Update npm dependencies
+* Adopt semantic versioning
+
 ## 0.1.0-alpha.4 - 2015-04-25
 
 * Session references the auth object under google._options
