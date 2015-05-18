@@ -1,4 +1,8 @@
-## 0.1.0 - 2015-04-25
+## 0.1.1 - 2015-05-18
+
+* Freeze googleapis npm module version to v.2.0.2 until further notice
+
+## 0.1.0 - 2015-05-18
 
 * Update npm dependencies
 * Adopt semantic versioning
