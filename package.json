@@ -1,6 +1,6 @@
 {
   "name": "bigquery-model",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Node.js abstraction layer to BigQuery tables",
   "repository": {
     "type": "git",
@@ -22,7 +22,7 @@
   "license": "MIT",
   "dependencies": {
     "bluebird": "^2.9.25",
-    "google-auth-library": "^0.9.3",
+    "google-auth-library": "0.9.3",
     "googleapis": "2.0.2",
     "lodash": "^3.8.0",
     "node-uuid": "^1.4.3",
