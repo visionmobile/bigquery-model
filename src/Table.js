@@ -44,9 +44,11 @@ Table.prototype.register = function (callback) {
       schema: this.schema
     }
   })
+
     .spread(function (data) {
       return data.id;
     })
+
     .catch(function (err) {
       // check if table already exists
       if (err.code === 409) {
@@ -55,12 +57,13 @@ Table.prototype.register = function (callback) {
 
       throw err;
     })
+
     .nodeify(callback);
 };
 
 /**
  * Appends the specified records to table.
- * @param {Array<Object>} records
+ * @param {Object, Array<Object>} records
  * @param {Function} [callback]
  * @return {Promise}
  */
@@ -70,7 +73,7 @@ Table.prototype.push = function (records, callback, _attempt) {
   _attempt = _attempt || 0;
 
   // make sure records is array
-  if (!_.isArray(records)) records = [records];
+  if (!_.isArray(records)) records = _.toArray(arguments);
 
   // prepare records for insert
   records = records.map(function (e) {
@@ -88,6 +91,7 @@ Table.prototype.push = function (records, callback, _attempt) {
       rows: records
     }
   })
+
     .spread(function (data) {
       // check if errors exist
       if (data.insertErrors) {
@@ -96,6 +100,7 @@ Table.prototype.push = function (records, callback, _attempt) {
 
       return data;
     })
+
     .catch(function (err) {
       // check if session has expired
       if (err.code === 401 && _attempt === 0) {
@@ -105,6 +110,7 @@ Table.prototype.push = function (records, callback, _attempt) {
           });
       }
     })
+
     .nodeify(callback);
 };
 
@@ -130,6 +136,7 @@ Table.prototype.query = function (sql, callback, _attempt) {
       }
     }
   })
+
     .catch(function (err) {
       // check if session has expired
       if (err.code === 401 && _attempt === 0) {
@@ -139,6 +146,7 @@ Table.prototype.query = function (sql, callback, _attempt) {
           });
       }
     })
+
     .nodeify(callback);
 };
 

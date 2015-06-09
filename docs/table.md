@@ -87,7 +87,7 @@ Appends the given records to table.
 
 ##### Parameters
 
-* `records` _(Array)_ an array of objects
+* `records` _(Object*, Array)_ an object (accepts multiple arguments) or an array of objects
 * `callback` _(Function)_ optional callback function with (err) arguments
 
 ##### Returns
