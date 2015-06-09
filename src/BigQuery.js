@@ -3,6 +3,7 @@ var google = require('googleapis');
 var _ = require('lodash');
 var type = require('type-of');
 var Table = require('./Table');
+var TableFactory = require('./TableFactory');
 
 /**
  * Assigns the designated auth options to the client.
@@ -34,7 +35,5 @@ exports.auth = function (options) {
   )});
 };
 
-/**
- * Exports the Table interface.
- */
+exports.TableFactory = TableFactory;
 exports.Table = Table;

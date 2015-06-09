@@ -5,6 +5,8 @@ var tabledata = Promise.promisifyAll(google.bigquery('v2').tabledata);
 var jobs = Promise.promisifyAll(google.bigquery('v2').jobs);
 var uuid = require('node-uuid');
 var _ = require('lodash');
+var type = require('type-of');
+
 var session = require('./session');
 
 /**
@@ -21,6 +23,48 @@ function Table(props) {
   this.tableId = props.tableId;
   this.schema = props.schema || null;
 }
+
+/**
+ * Sets the projectId property of this table.
+ * @param {String} projectId
+ * @return {@this}
+ */
+Table.prototype.setProjectId = function (projectId) {
+  if (!_.isString(projectId)) {
+    throw new Error('Invalid projectId argument; expected string, received ' + type(projectId));
+  }
+
+  this.projectId = projectId;
+  return this;
+};
+
+/**
+ * Sets the datasetId property of this table.
+ * @param {String} projectId
+ * @return {@this}
+ */
+Table.prototype.setDatasetId = function (datasetId) {
+  if (!_.isString(datasetId)) {
+    throw new Error('Invalid datasetId argument; expected string, received ' + type(datasetId));
+  }
+
+  this.datasetId = datasetId;
+  return this;
+};
+
+/**
+ * Sets the tableId property of this table.
+ * @param {String} projectId
+ * @return {@this}
+ */
+Table.prototype.setTableId = function (tableId) {
+  if (!_.isString(tableId)) {
+    throw new Error('Invalid tableId argument; expected string, received ' + type(tableId));
+  }
+
+  this.tableId = tableId;
+  return this;
+};
 
 /**
  * Registers (creates) the table in database.
