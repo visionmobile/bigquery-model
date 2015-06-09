@@ -1,3 +1,8 @@
+## 0.2.0 - 2015-06-09
+
+* Expose TableFactory class to generate Table classes.
+* Update googleapis to v.2.0.5 (https://github.com/google/google-auth-library-nodejs/issues/37)
+
 ## 0.1.3 - 2015-06-09
 
 * Extend #push to accept multiple objects or array
