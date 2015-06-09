@@ -1,3 +1,7 @@
+## 0.1.3 - 2015-06-09
+
+* Extend #push to accept multiple objects or array
+
 ## 0.1.2 - 2015-05-18
 
 * Freeze google-auth-library to v.0.9.3
