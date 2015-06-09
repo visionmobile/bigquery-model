@@ -24,7 +24,7 @@
     "bluebird": "^2.9.27",
     "google-auth-library": "0.9.3",
     "googleapis": "2.0.2",
-    "lodash": "^3.8.0",
+    "lodash": "^3.9.3",
     "node-uuid": "^1.4.3",
     "type-of": "^2.0.1"
   },
