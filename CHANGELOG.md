@@ -1,3 +1,7 @@
+## 0.2.1 - 2015-06-10
+
+Bugfix: Referencing invalid module name "./table" instead of "./Table"
+
 ## 0.2.0 - 2015-06-09
 
 * Expose TableFactory class to generate Table classes.
