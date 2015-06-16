@@ -18,7 +18,18 @@
     "api",
     "schema"
   ],
-  "author": "Dimitrios C. Michalakos <dimitris@jmike.gr>",
+  "author": {
+    "name": "VisionMobile",
+    "email": "admin@visionmobile.com",
+    "url": "https://github.com/visionmobile"
+  },
+  "maintainers": [
+    {
+      "name": "Dimitrios C. Michalakos",
+      "email": "dimitris@jmike.gr",
+      "url": "https://github.com/jmike"
+    }
+  ],
   "license": "MIT",
   "dependencies": {
     "bluebird": "^2.9.27",
