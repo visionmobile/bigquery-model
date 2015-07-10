@@ -23,7 +23,7 @@
     "email": "admin@visionmobile.com",
     "url": "https://github.com/visionmobile"
   },
-  "maintainers": [
+  "contributors": [
     {
       "name": "Dimitrios C. Michalakos",
       "email": "dimitris@jmike.gr",
@@ -32,15 +32,15 @@
   ],
   "license": "MIT",
   "dependencies": {
-    "bluebird": "^2.9.27",
-    "googleapis": "^2.0.5",
-    "lodash": "^3.9.3",
+    "bluebird": "^2.9.33",
+    "googleapis": "^2.0.6",
+    "lodash": "^3.10.0",
     "node-uuid": "^1.4.3",
     "type-of": "^2.0.1"
   },
   "devDependencies": {
     "chai": "^3.0.0",
-    "dotenv": "^1.1.0",
+    "dotenv": "^1.2.0",
     "mocha": "^2.2.5"
   }
 }
