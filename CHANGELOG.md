@@ -1,3 +1,7 @@
+## 0.2.2 - 2015-07-10
+
+Bugfix: Don't supress errors on #push
+
 ## 0.2.1 - 2015-06-10
 
 Bugfix: Referencing invalid module name "./table" instead of "./Table"
