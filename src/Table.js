@@ -153,6 +153,8 @@ Table.prototype.push = function (records, callback, _attempt) {
             return _this.push(records, callback, _attempt + 1);
           });
       }
+
+      throw err;
     })
 
     .nodeify(callback);
