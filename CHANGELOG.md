@@ -1,10 +1,14 @@
+## 0.2.3 - 2015-07-10
+
+* Update npm dependencies (bluebird@2.9.33, dotenv@1.2.0, googleapis@2.0.6, lodash@3.10.0)
+
 ## 0.2.2 - 2015-07-10
 
-Bugfix: Don't supress errors on #push
+* Bugfix: Don't supress errors on #push
 
 ## 0.2.1 - 2015-06-10
 
-Bugfix: Referencing invalid module name "./table" instead of "./Table"
+* Bugfix: Referencing invalid module name "./table" instead of "./Table"
 
 ## 0.2.0 - 2015-06-09
 
