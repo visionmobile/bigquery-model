@@ -4,7 +4,7 @@ import google from 'googleapis';
 import Client from 'googleapis/apis/bigquery/v2';
 import _ from 'lodash';
 import type from 'type-of';
-import Project from '../Project';
+import Project from './Project';
 
 class BigQuery {
 
@@ -38,6 +38,9 @@ class BigQuery {
         null
       )
     });
+
+    // hack the stupid google client (damn it)
+    this.client.google = {_options: {}};
 
     Promise.promisifyAll(this.client.jobs);
     Promise.promisifyAll(this.client.tables);

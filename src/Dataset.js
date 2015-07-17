@@ -1,5 +1,6 @@
 import Promise from 'bluebird';
-import Table from '../Table';
+import _ from 'lodash';
+import Table from './Table';
 
 class Dataset {
 
@@ -37,11 +38,25 @@ class Dataset {
         query: sql,
         useQueryCache: true,
         defaultDataset: {
-          datasetId: this.datasetId,
-          projectId: this.projectId
+          projectId: this.projectId,
+          datasetId: this.datasetId
         }
       }
     })
+
+      .spread((data) => {
+        let fields = data.schema.fields.map((field) => {
+          return field.name;
+        });
+
+        return data.rows.map((row) => {
+          let data = row.f.map((col) => {
+            return col.v;
+          });
+
+          return _.zipObject(fields, data);
+        });
+      })
 
       .nodeify(callback);
   }
