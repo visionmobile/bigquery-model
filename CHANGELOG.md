@@ -1,3 +1,9 @@
+## 0.3.0-alpha.1 - 2015-07-17
+
+* Change the API exposing Project, Dataset and Table
+* Rewrite using es2015
+* Update npm dependencies (bluebird@2.9.34, googleapis@2.1.1)
+
 ## 0.2.3 - 2015-07-10
 
 * Update npm dependencies (bluebird@2.9.33, dotenv@1.2.0, googleapis@2.0.6, lodash@3.10.0)
