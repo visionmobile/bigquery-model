@@ -36,7 +36,7 @@
   "license": "MIT",
   "dependencies": {
     "bluebird": "^2.9.34",
-    "googleapis": "^2.0.6",
+    "googleapis": "^2.1.1",
     "lodash": "^3.10.0",
     "node-uuid": "^1.4.3",
     "type-of": "^2.0.1"
