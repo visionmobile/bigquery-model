@@ -1,3 +1,7 @@
+## 0.3.0-alpha.2 - 2015-07-17
+
+* Fix the query method to return data in JSON
+
 ## 0.3.0-alpha.1 - 2015-07-17
 
 * Change the API exposing Project, Dataset and Table
