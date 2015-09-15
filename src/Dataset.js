@@ -11,7 +11,26 @@ class Dataset {
   }
 
   getTable(tableId) {
-    return new Table(tableId);
+    return new Table({
+      tableId,
+      datasetId: this.datasetId,
+      projectId: this.projectId,
+      client: this.client
+    });
+  }
+
+  createTable(tableId, schema, callback) {
+    const table = new Table({
+      tableId,
+      schema,
+      datasetId: this.datasetId,
+      projectId: this.projectId,
+      client: this.client
+    });
+
+    return table.register()
+      .return(table)
+      .nodeify(callback);
   }
 
   refreshAccessToken(callback) {

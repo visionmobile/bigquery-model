@@ -32,9 +32,7 @@ class Table {
       }
     })
 
-      .spread((data) => {
-        return data.id;
-      })
+      .spread((data) => data.id)
 
       .catch((err) => {
         // check if table already exists
