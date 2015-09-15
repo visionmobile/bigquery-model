@@ -15,7 +15,7 @@ class Dataset {
   }
 
   refreshAccessToken(callback) {
-    let resolver = (resolve, reject) => {
+    const resolver = (resolve, reject) => {
       this.client.auth.refreshAccessToken((err) => {
         if (err) return reject(err);
         resolve();
@@ -45,16 +45,13 @@ class Dataset {
     })
 
       .spread((data) => {
-        let fields = data.schema.fields.map((field) => {
+        const fields = data.schema.fields.map((field) => {
           return field.name;
         });
 
         return data.rows.map((row) => {
-          let data = row.f.map((col) => {
-            return col.v;
-          });
-
-          return _.zipObject(fields, data);
+          const values = row.f.map((col) => col.v);
+          return _.zipObject(fields, values);
         });
       })
 
