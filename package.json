@@ -47,7 +47,7 @@
     "del": "^2.0.2",
     "dotenv": "^1.2.0",
     "gulp": "^3.9.0",
-    "gulp-babel": "^5.1.0",
+    "gulp-babel": "^5.2.1",
     "gulp-load-plugins": "^0.10.0",
     "gulp-plumber": "^1.0.1",
     "mkdirp": "^0.5.1",
