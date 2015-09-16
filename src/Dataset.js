@@ -19,18 +19,14 @@ class Dataset {
     });
   }
 
-  createTable(tableId, schema, callback) {
-    const table = new Table({
+  createTable(tableId, schema) {
+    return new Table({
       tableId,
       schema,
       datasetId: this.datasetId,
       projectId: this.projectId,
       client: this.client
     });
-
-    return table.register()
-      .return(table)
-      .nodeify(callback);
   }
 
   refreshAccessToken(callback) {
