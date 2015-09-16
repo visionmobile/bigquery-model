@@ -1,6 +1,6 @@
 var path = require('path');
 var gulp = require('gulp');
-var del = require('del');
+var rimraf = require('rimraf');
 var mkdirp = require('mkdirp');
 var $ = require('gulp-load-plugins')();
 
@@ -10,7 +10,7 @@ var destinationFolder = path.dirname(mainFile);
 
 // Remove the built files
 gulp.task('clean', function (cb) {
-  del([destinationFolder], cb);
+  rimraf(destinationFolder, cb);
 });
 
 // Build two versions of the library
