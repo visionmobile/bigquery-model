@@ -1,3 +1,9 @@
+## 0.3.0 - 2015-09-16
+
+* Expose Dataset#createTable()
+* Update npm dependencies: babel@5.8.23, mocha@2.3.2, gulp-babel@5.2.1, chai@3.2.0, googleapis@2.1.3, lodash@3.10.1, bluebird@2.10.0
+* Replace .jshintrc with .eslintrc
+
 ## 0.3.0-alpha.2 - 2015-07-17
 
 * Fix the query method to return data in JSON
