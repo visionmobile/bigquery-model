@@ -52,9 +52,8 @@
     "gulp-babel": "^6.1.0",
     "gulp-plumber": "^1.0.1",
     "gulp-rimraf": "^0.2.0",
-    "run-sequence": "^1.1.4",
-    "mkdirp": "^0.5.1",
     "mocha": "^2.3.2",
-    "rimraf": "^2.4.3"
+    "rimraf": "^2.4.3",
+    "run-sequence": "^1.1.4"
   }
 }
