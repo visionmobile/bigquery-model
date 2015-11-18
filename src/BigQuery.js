@@ -53,9 +53,9 @@ class BigQuery {
     // hack the stupid google client (damn it)
     this.client.google = {_options: {}};
 
-    Promise.promisifyAll(this.client.jobs);
-    Promise.promisifyAll(this.client.tables);
-    Promise.promisifyAll(this.client.tabledata);
+    Promise.promisifyAll(this.client.jobs, {multiArgs: true});
+    Promise.promisifyAll(this.client.tables, {multiArgs: true});
+    Promise.promisifyAll(this.client.tabledata, {multiArgs: true});
   }
 
   createDataset(datasetId) {
