@@ -1,3 +1,7 @@
+## 1.0.1 - 2015-11-18
+
+* Bugfix: invalid reference; export Table using CommonJS
+
 ## 1.0.0 - 2015-11-18
 
 * Change BigQuery API which now requires `projectId` in `options` argument
