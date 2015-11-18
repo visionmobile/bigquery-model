@@ -1,18 +1,35 @@
-# BigQuery Model
+# BigQuery API reference
 
 ## Table of Contents
 
-* [auth(options)](#auth)
-* [Table](#table)
+* [Intro](#intro)
+* [Constructor](#constructor)
+* [Methods](#methods)
+  * [createDataset(datasetId)](#createDataset)
 
-### <a name="auth" href="#auth">#</a>auth(options) -> void
+## Intro
 
-Sets authentication options of the internal BigQuery client.
+Install bigquery-model using npm.
+
+```
+$ npm install bigquery-model
+```
+
+Reference BigQuery in your code.
+
+```javascript
+var BigQuery = require('bigquery-model');
+```
+
+## Constructor
+
+Creates a new BigQuery Client.
 
 ##### Parameters
 
 * `options` _(Object)_ authentication options (required)
   * `email` _(String)_ your registered email in Google Cloud (required)
+  * `projectId` _(String)_ the id of the the project to work on (required)
   * `keyFile` _(String)_ path to the signature file (optional if key is provided)
   * `key` _(String)_ the contents of the signature file (optional if keyFile is provided)
 
@@ -23,15 +40,31 @@ _(Error)_ if props are invalid.
 ##### Example
 
 ```javascript
-var bigquery = require('bigquery-model');
+var BigQuery = require('bigquery-model');
 
-// set authentication properties
-bigquery.auth({
-  email: 'yo@gmail.com',
+var bq = new BigQuery({
+  email: 'xx@domain.com',
+  projectId: 'xxx',
   key: 'pem-key'
 });
 ```
 
-### <a name="table" href="#table">#</a>Table -> Table
+## Methods
 
-A handy reference to the [Table](https://github.com/visionmobile/bigquery-model/blob/master/docs/table.md) class.
+### <a name="createDataset" href="createDataset">#</a>createDataset(datasetId) -> Dataset
+
+Creates and returns a new [Dataset](https://github.com/visionmobile/bigquery-model/blob/master/docs/dataset.md) with the given id.
+
+##### Parameters
+
+* `datasetId` _(String)_ the id of a dataset on BigQuery (required)
+
+##### Returns
+
+A [Dataset](https://github.com/visionmobile/bigquery-model/blob/master/docs/dataset.md) instance.
+
+##### Example
+
+```javascript
+var dataset = bq.createDataset('xxx');
+```

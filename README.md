@@ -1,6 +1,6 @@
 # BigQuery Model
 
-Node.js abstraction layer to BigQuery tables.
+Managing BigQuery complexity using simple, well-defined models.
 
 #### Features
 
@@ -10,36 +10,20 @@ Node.js abstraction layer to BigQuery tables.
 ## Quick start
 
 ```javascript
-var bigquery = require('bigquery-model');
+var BigQuery = require('bigquery-model');
 
-// set authentication properties
-bigquery.auth({
-  email: 'yo@gmail.com',
+var bq = new BigQuery({
+  email: 'xx@domain.com',
+  projectId: 'xxx',
   key: 'pem-key'
 });
 
-var table = new bigquery.Table({
-  projectId: 'my-project-42',
-  datasetId: 'my-dataset',
-  tableId: 'my-table',
-  schema: {
-    fields: [
-      {name: 'first_name', type: 'string', mode: 'required'},
-      {name: 'last_name', type: 'string', mode: 'required'},
-      {name: 'address', type: 'record', fields: [
-        {name: 'street', type: 'string'},
-        {name: 'number', type: 'integer'},
-        {name: 'area', type: 'string'},
-      ]},
-      {name: 'hobbies', type: 'string', mode: 'repeated'}
-    ]
-  }
-});
+var dataset = bq.createDataset('xxx');
 
-return table.query('SELECT first_name, last_name FROM [my-table];')
+return dataset.query('SELECT first_name, last_name FROM [my-table];')
 ```
 
-For further information on how to use this library please refer to the [API docs](https://github.com/visionmobile/bigquery-model/blob/master/docs/table.md).
+For further information on how to use this library please refer to the [API docs](https://github.com/visionmobile/bigquery-model/blob/master/docs/bigquery.md).
 
 ## Installation
 

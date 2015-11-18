@@ -1,56 +1,38 @@
-# BigQuery Table
+# Table API Reference
 
 ## Table of Contents
 
-* [Constructor](#constructor)
+* [Intro](#intro)
 * [Methods](#methods)
   * [register()](#register)
   * [push(records)](#push)
-  * [query(sql)](#query)
 
-## Constructor
+## Intro
 
-Creates a new BigQuery Table.
-
-##### Parameters
-
-* `props` _(Object)_ table properties (required)
-  * `projectId` _(String)_ bigquery project id (required)
-  * `datasetId` _(String)_ bigquery dataset id (required)
-  * `tableId` _(String)_ bigquery table id (required)
-  * `schema` _(Object)_ optional table schema
-
-##### Throws
-
-_(Error)_ if props are invalid.
-
-##### Example
+Best way to create a Table is using the [Dataset#createTable()](https://github.com/visionmobile/bigquery-model/blob/master/docs/dataset.md#createTable) method.
 
 ```javascript
-var bigquery = require('bigquery-model');
+var BigQuery = require('bigquery-model');
 
-// set authentication properties
-bigquery.auth({
-  email: 'yo@gmail.com',
+var bq = new BigQuery({
+  email: 'xx@domain.com',
+  projectId: 'xxx',
   key: 'pem-key'
 });
 
-var table = new bigquery.Table({
-  projectId: 'my-project-42',
-  datasetId: 'my-dataset',
-  tableId: 'my-table',
-  schema: {
-    fields: [
-      {name: 'first_name', type: 'string', mode: 'required'},
-      {name: 'last_name', type: 'string', mode: 'required'},
-      {name: 'address', type: 'record', fields: [
-        {name: 'street', type: 'string'},
-        {name: 'number', type: 'integer'},
-        {name: 'area', type: 'string'},
-      ]},
-      {name: 'hobbies', type: 'string', mode: 'repeated'}
-    ]
-  }
+var dataset = bq.createDataset('xxx');
+
+var table = dataset.createTable('xxx', {
+  fields: [
+    {name: 'first_name', type: 'string', mode: 'required'},
+    {name: 'last_name', type: 'string', mode: 'required'},
+    {name: 'address', type: 'record', fields: [
+      {name: 'street', type: 'string'},
+      {name: 'number', type: 'integer'},
+      {name: 'area', type: 'string'},
+    ]},
+    {name: 'hobbies', type: 'string', mode: 'repeated'}
+  ]
 });
 ```
 
@@ -99,32 +81,7 @@ A bluebird promise.
 ```javascript
 table.push(records)
   .then(function () {
-    // records appended to table
-  })
-  .catch(function (err) {
-    console.error(err);
-  });
-```
-
-### <a name="query" href="#query">#</a>query(sql, [callback]) -> Promise
-
-Runs the designated SQL query and returns the results.
-
-##### Parameters
-
-* `sql` _(String)_ the SQL query to run
-* `callback` _(Function)_ optional callback function with (err, records) arguments
-
-##### Returns
-
-A bluebird promise resolving to the query results.
-
-##### Example
-
-```javascript
-table.sql('SELECT COUNT(*) AS count FROM [my-table]')
-  .then(function (records) {
-    // do something with records
+    console.log('Records successfully appended to table');
   })
   .catch(function (err) {
     console.error(err);
