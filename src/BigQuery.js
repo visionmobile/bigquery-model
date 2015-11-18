@@ -1,10 +1,13 @@
-import path from 'path';
-import Promise from 'bluebird';
-import google from 'googleapis';
-import Client from 'googleapis/apis/bigquery/v2';
-import _ from 'lodash';
-import type from 'type-of';
-import Project from './Project';
+const path = require('path');
+
+const Promise = require('bluebird');
+const google = require('googleapis');
+const Client = require('googleapis/apis/bigquery/v2');
+const _ = require('lodash');
+const type = require('type-of');
+const CustomError = require('customerror');
+
+const Dataset = require('./Dataset');
 
 class BigQuery {
 
@@ -12,22 +15,29 @@ class BigQuery {
    * Creates a new BigQuery client.
    * @param {Object} options
    * @param {String} options.email
+   * @param {String} options.projectId
    * @param {String} [options.key]
    * @param {String} [options.keyFile]
    * @void
    */
   constructor(options) {
     if (!_.isPlainObject(options)) {
-      throw new Error('Invalid options argument; expected object, received ' + type(options));
+      throw new CustomError(`Invalid options argument; expected object, received ${type(options)}`, 'InvalidArgument');
     }
 
     if (!_.isString(options.email)) {
-      throw new Error('Invalid email option; expected string, received ' + type(options.email));
+      throw new CustomError(`Invalid email property; expected string, received ${type(options.email)}`, 'InvalidArgument');
     }
 
-    if (options.key == null && options.keyFile == null) {
-      throw new Error('You must specify a key or path to the key file');
+    if (!_.isString(options.projectId)) {
+      throw new CustomError(`Invalid email property; expected string, received ${type(options.projectId)}`, 'InvalidArgument');
     }
+
+    if (!options.key && !options.keyFile) {
+      throw new CustomError('You must specify a key or a key file');
+    }
+
+    this.projectId = options.projectId;
 
     this.client = new Client({
       auth: new google.auth.JWT(
@@ -47,43 +57,14 @@ class BigQuery {
     Promise.promisifyAll(this.client.tabledata);
   }
 
-  getProject(projectId) {
-    return new Project({
-      projectId,
+  createDataset(datasetId) {
+    return new Dataset({
+      datasetId,
+      projectId: this.projectId,
       client: this.client
     });
   }
 
 }
 
-// /**
-//  * Assigns the designated auth options to the client.
-//  * @param {Object} options
-//  * @param {String} options.email
-//  * @param {String} [options.key]
-//  * @param {String} [options.keyFile]
-//  * @void
-//  */
-// exports.auth = function (options) {
-//   if (!_.isPlainObject(options)) {
-//     throw new Error('Invalid options argument; expected object, received ' + type(options));
-//   }
-
-//   if (!_.isString(options.email)) {
-//     throw new Error('Invalid email option; expected string, received ' + type(options.email));
-//   }
-
-//   if (options.key == null && options.keyFile == null) {
-//     throw new Error('You must specify a key or path to the key file');
-//   }
-
-//   google.options({auth: new google.auth.JWT(
-//     options.email,
-//     options.keyFile ? path.resolve(options.keyFile) : null,
-//     options.key || null,
-//     ['https://www.googleapis.com/auth/bigquery'],
-//     null
-//   )});
-// };
-
-export default BigQuery;
+module.exports = BigQuery;

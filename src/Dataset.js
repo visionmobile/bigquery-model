@@ -1,6 +1,6 @@
-import Promise from 'bluebird';
-import _ from 'lodash';
-import Table from './Table';
+const Promise = require('bluebird');
+const _ = require('lodash');
+const Table = require('./Table');
 
 class Dataset {
 
@@ -8,15 +8,6 @@ class Dataset {
     this.datasetId = datasetId;
     this.projectId = projectId;
     this.client = client;
-  }
-
-  getTable(tableId) {
-    return new Table({
-      tableId,
-      datasetId: this.datasetId,
-      projectId: this.projectId,
-      client: this.client
-    });
   }
 
   createTable(tableId, schema) {
@@ -30,14 +21,13 @@ class Dataset {
   }
 
   refreshAccessToken(callback) {
-    const resolver = (resolve, reject) => {
+    return new Promise((resolve, reject) => {
       this.client.auth.refreshAccessToken((err) => {
         if (err) return reject(err);
         resolve();
       });
-    };
-
-    return new Promise(resolver).nodeify(callback);
+    })
+      .nodeify(callback);
   }
 
   /**
@@ -75,4 +65,4 @@ class Dataset {
 
 }
 
-export default Dataset;
+module.exports = Dataset;
