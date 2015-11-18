@@ -1,3 +1,10 @@
+## 1.0.0 - 2015-11-18
+
+* Change BigQuery API which now requires `projectId` in `options` argument
+* Allow #query(), #createDataset() and #createTable() directly from BigQuery
+* Update npm dependencies: googleapis@2.1.6, bluebird@3.0.5, node-uuid@1.4.7, customerror@1.0.1
+* Update babel + gulp infrastructure
+
 ## 0.3.0 - 2015-09-16
 
 * Expose Dataset#createTable()
