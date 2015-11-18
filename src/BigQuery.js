@@ -8,6 +8,7 @@ const type = require('type-of');
 const CustomError = require('customerror');
 
 const Dataset = require('./Dataset');
+const Table = require('./Table');
 
 class BigQuery {
 
@@ -63,6 +64,39 @@ class BigQuery {
       projectId: this.projectId,
       client: this.client
     });
+  }
+
+  createTable(datasetId, tableId, schema) {
+    return new Table({
+      tableId,
+      schema,
+      datasetId,
+      projectId: this.projectId,
+      client: this.client
+    });
+  }
+
+  query(sql, callback) {
+    return this.client.jobs.queryAsync({
+      projectId: this.projectId,
+      resource: {
+        query: sql,
+        useQueryCache: true
+      }
+    })
+
+      .spread((data) => {
+        const fields = data.schema.fields.map((field) => {
+          return field.name;
+        });
+
+        return data.rows.map((row) => {
+          const values = row.f.map((col) => col.v);
+          return _.zipObject(fields, values);
+        });
+      })
+
+      .nodeify(callback);
   }
 
 }
