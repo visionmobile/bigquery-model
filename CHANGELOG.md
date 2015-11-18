@@ -1,3 +1,7 @@
+## 1.0.2 - 2015-11-18
+
+* Pass {multiArgs: true} on #promisifyAll().
+
 ## 1.0.1 - 2015-11-18
 
 * Bugfix: invalid reference; export Table using CommonJS
