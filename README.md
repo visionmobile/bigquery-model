@@ -18,9 +18,7 @@ var bq = new BigQuery({
   key: 'pem-key'
 });
 
-var dataset = bq.createDataset('xxx');
-
-return dataset.query('SELECT first_name, last_name FROM [my-table];')
+return bq.query('SELECT first_name, last_name FROM [dataset.table];')
 ```
 
 For further information on how to use this library please refer to the [API docs](https://github.com/visionmobile/bigquery-model/blob/master/docs/bigquery.md).
