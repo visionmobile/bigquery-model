@@ -1,5 +1,5 @@
-import uuid from 'node-uuid';
-import _ from 'lodash';
+const uuid = require('node-uuid');
+const _ = require('lodash');
 
 class Table {
 
@@ -87,4 +87,4 @@ class Table {
 
 }
 
-export default Table;
+module.exports = Table;
