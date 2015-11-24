@@ -31,7 +31,7 @@ class BigQuery {
     }
 
     if (!_.isString(options.projectId)) {
-      throw new CustomError(`Invalid email property; expected string, received ${type(options.projectId)}`, 'InvalidArgument');
+      throw new CustomError(`Invalid projectId property; expected string, received ${type(options.projectId)}`, 'InvalidArgument');
     }
 
     if (!options.key && !options.keyFile) {
