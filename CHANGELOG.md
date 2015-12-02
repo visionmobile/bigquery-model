@@ -1,6 +1,10 @@
+## 1.0.4 - 2015-12-02
+
+* Bugfix: make sure data.rows is always an array
+
 ## 1.0.3 - 2015-11-24
 
-* Fixed an error message when projectId is not of String type. See https://github.com/visionmobile/bigquery-model/issues/1
+* Bugfix: invalid error message when projectId is not String - see https://github.com/visionmobile/bigquery-model/issues/1
 
 ## 1.0.2 - 2015-11-18
 
