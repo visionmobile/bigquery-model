@@ -54,6 +54,9 @@ class Dataset {
           return field.name;
         });
 
+        // make sure rows exist
+        data.rows = data.rows || [];
+
         return data.rows.map((row) => {
           const values = row.f.map((col) => col.v);
           return _.zipObject(fields, values);
