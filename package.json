@@ -1,6 +1,6 @@
 {
   "name": "bigquery-model",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Node.js abstraction layer to BigQuery tables",
   "repository": {
     "type": "git",
@@ -35,15 +35,15 @@
     "type-of": "^2.0.1"
   },
   "devDependencies": {
-    "babel": "^6.2.4",
-    "babel-core": "^6.2.4",
-    "babel-plugin-transform-es2015-modules-commonjs": "^6.2.4",
-    "babel-preset-es2015": "^6.2.4",
+    "babel": "^6.5.1",
+    "babel-core": "^6.5.1",
+    "babel-plugin-add-module-exports": "^0.1.2",
+    "babel-preset-es2015": "^6.5.0",
     "chai": "^3.5.0",
-    "dotenv": "^1.2.0",
-    "gulp": "^3.9.0",
-    "gulp-babel": "^6.1.1",
-    "gulp-plumber": "^1.0.1",
+    "dotenv": "^2.0.0",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-plumber": "^1.1.0",
     "gulp-rimraf": "^0.2.0",
     "mocha": "^2.4.5",
     "run-sequence": "^1.1.5"
