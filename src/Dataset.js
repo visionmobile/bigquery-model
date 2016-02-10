@@ -1,6 +1,6 @@
-const Promise = require('bluebird');
-const _ = require('lodash');
-const Table = require('./Table');
+import Promise from 'bluebird';
+import _ from 'lodash';
+import Table from './Table';
 
 class Dataset {
 
@@ -69,4 +69,4 @@ class Dataset {
 
 }
 
-module.exports = Dataset;
+export default Dataset;

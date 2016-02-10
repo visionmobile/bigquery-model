@@ -1,14 +1,12 @@
-const path = require('path');
-
-const Promise = require('bluebird');
-const google = require('googleapis');
-const Client = require('googleapis/apis/bigquery/v2');
-const _ = require('lodash');
-const type = require('type-of');
-const CustomError = require('customerror');
-
-const Dataset = require('./Dataset');
-const Table = require('./Table');
+import path from 'path';
+import Promise from 'bluebird';
+import google from 'googleapis';
+import Client from 'googleapis/apis/bigquery/v2';
+import _ from 'lodash';
+import type from 'type-of';
+import CustomError from 'customerror';
+import Dataset from './Dataset';
+import Table from './Table';
 
 class BigQuery {
 
@@ -105,4 +103,4 @@ class BigQuery {
 
 }
 
-module.exports = BigQuery;
+export default BigQuery;
