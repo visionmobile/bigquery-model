@@ -86,17 +86,18 @@ class BigQuery {
     })
 
       .spread((data) => {
-        const fields = data.schema.fields.map((field) => {
-          return field.name;
-        });
+        const fields = _.chain(data)
+          .get('schema.fields', [])
+          .map((field) => field.name)
+          .value();
 
-        // make sure rows exist
-        data.rows = data.rows || [];
-
-        return data.rows.map((row) => {
-          const values = row.f.map((col) => col.v);
-          return _.zipObject(fields, values);
-        });
+        return _.chain(data)
+          .get('rows', [])
+          .map((row) => {
+            const values = row.f.map((col) => col.v);
+            return _.zipObject(fields, values);
+          })
+          .value();
       })
 
       .nodeify(callback);
