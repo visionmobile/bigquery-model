@@ -6,7 +6,7 @@
 * [Methods](#methods)
   * [createTable(tableId)](#createTable)
   * [refreshAccessToken([callback])](#refreshAccessToken)
-  * [query(sql, [callback])](#query)
+  * [query(sql, [options], [callback])](#query)
 
 ## Intro
 
@@ -63,6 +63,8 @@ Runs the designated SQL query and returns the results.
 ##### Parameters
 
 * `sql` _(String)_ the SQL query to run (required)
+* `options` _(Object)_ query options (optional)
+  * `timeout` _(number)_ timeout in millis; defaults to 10000
 * `callback` _(Function)_ callback function with (err, records) arguments (optional)
 
 ##### Returns
@@ -72,7 +74,7 @@ A bluebird promise resolving to the query results.
 ##### Example
 
 ```javascript
-dataset.sql('SELECT COUNT(*) AS count FROM [my-table]')
+dataset.query('SELECT COUNT(*) AS count FROM [my-table]')
   .then(function (records) {
     // do something with records
   })
