@@ -30,7 +30,7 @@
     "bluebird": "^3.2.2",
     "customerror": "^1.0.1",
     "googleapis": "^2.1.7",
-    "lodash": "^4.3.0",
+    "lodash": "^4.5.0",
     "node-uuid": "^1.4.7",
     "type-of": "^2.0.1"
   },
