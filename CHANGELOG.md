@@ -1,3 +1,8 @@
+## 1.1.0 - 2016-02-19
+
+* Add options parameter to BigQuery#query() and Dataset#query() - user should be able to specify query timeout.
+* Update npm dependencies: lodash@4.5.0, bluebird@3.3.1.
+
 ## 1.0.5 - 2016-02-10
 
 * Bugfix: BigQuery#query() and Dataset#query() should return empty array when data or schema is undefined.
