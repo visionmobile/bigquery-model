@@ -74,13 +74,23 @@ class BigQuery {
     });
   }
 
-  query(sql, callback) {
+  query(sql, options, callback) {
+    if (_.isFunction(options)) {
+      callback = options;
+      options = {};
+    }
+
+    options = _.defaults(options, {
+      timeout: 10000
+    });
+
     return this.client.jobs.queryAsync({
       projectId: this.projectId,
       resource: {
         query: sql,
         useQueryCache: true
-      }
+      },
+      timeoutMs: options.timeout
     })
 
       .spread((data) => {

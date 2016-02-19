@@ -33,10 +33,20 @@ class Dataset {
   /**
    * Runs the designated SQL query and returns the results.
    * @param {String} sql
+   * @param {Object} [options]
    * @param {Function} [callback]
    * @return {Promise}
    */
-  query(sql, callback) {
+  query(sql, options, callback) {
+    if (_.isFunction(options)) {
+      callback = options;
+      options = {};
+    }
+
+    options = _.defaults(options, {
+      timeout: 10000
+    });
+
     return this.client.jobs.queryAsync({
       projectId: this.projectId,
       resource: {
@@ -46,7 +56,8 @@ class Dataset {
           projectId: this.projectId,
           datasetId: this.datasetId
         }
-      }
+      },
+      timeoutMs: options.timeout
     })
 
       .spread((data) => {
