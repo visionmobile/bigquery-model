@@ -64,7 +64,8 @@ Runs the designated SQL query and returns the results.
 
 * `sql` _(String)_ the SQL query to run (required)
 * `options` _(Object)_ query options (optional)
-  * `timeout` _(number)_ timeout in millis; defaults to 10000
+  * `timeoutMs` _(number)_ timeout in millis; defaults to 10000
+  * `useQueryCache` _(boolean)_ whether to look for the result in the query cache; defaults to true
 * `callback` _(Function)_ callback function with (err, records) arguments (optional)
 
 ##### Returns
