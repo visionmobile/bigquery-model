@@ -95,8 +95,6 @@ class BigQuery {
     })
 
       .spread((data) => {
-        console.log(JSON.stringify(data, null, 2));
-
         const fields = _.chain(data)
           .get('schema.fields', [])
           .map((field) => field.name)
