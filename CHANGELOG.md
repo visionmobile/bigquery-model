@@ -1,3 +1,10 @@
+## 1.2.0 - 2016-02-25
+
+* Rename timeout to timeoutMs to match BigQuery convention + add new option "useQueryCache".
+* Bugfix: Post timeout in the resource body, otherwise BigQuery ignores the setting.
+* Document "timeoutMs" and "useQueryCache" query options.
+* Update npm dependencies: lodash@4.5.1.
+
 ## 1.1.0 - 2016-02-19
 
 * Add options parameter to BigQuery#query() and Dataset#query() - user should be able to specify query timeout.
