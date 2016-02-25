@@ -1,3 +1,7 @@
+## 1.2.1 - 2016-02-25
+
+* Remove console.log statement, originally inserted for debugging.
+
 ## 1.2.0 - 2016-02-25
 
 * Rename timeout to timeoutMs to match BigQuery convention + add new option "useQueryCache".
