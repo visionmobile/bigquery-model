@@ -44,20 +44,21 @@ class Dataset {
     }
 
     options = _.defaults(options, {
-      timeout: 10000
+      timeoutMs: 10000,
+      useQueryCache: true
     });
 
     return this.client.jobs.queryAsync({
       projectId: this.projectId,
       resource: {
         query: sql,
-        useQueryCache: true,
+        useQueryCache: options.useQueryCache,
+        timeoutMs: options.timeoutMs,
         defaultDataset: {
           projectId: this.projectId,
           datasetId: this.datasetId
-        }
-      },
-      timeoutMs: options.timeout
+        },
+      }
     })
 
       .spread((data) => {

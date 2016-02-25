@@ -81,19 +81,22 @@ class BigQuery {
     }
 
     options = _.defaults(options, {
-      timeout: 10000
+      timeoutMs: 10000,
+      useQueryCache: true
     });
 
     return this.client.jobs.queryAsync({
       projectId: this.projectId,
       resource: {
         query: sql,
-        useQueryCache: true
-      },
-      timeoutMs: options.timeout
+        useQueryCache: options.useQueryCache,
+        timeoutMs: options.timeoutMs,
+      }
     })
 
       .spread((data) => {
+        console.log(JSON.stringify(data, null, 2));
+
         const fields = _.chain(data)
           .get('schema.fields', [])
           .map((field) => field.name)
